@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Press</title>
+</head>
+<body>
+    <button id="pressButton" onmousedown="startSending()" onmouseup="stopSending()">Press me</button>
+    <script>
+        let interval;
+
+        function startSending() {
+            interval = setInterval(function() {
+                sendEvent('press');
+            }, 100);  // Adjust the interval as needed
+        }
+
+        function stopSending() {
+            clearInterval(interval);
+            sendEvent('release');
+        }
+
+        function sendEvent(action) {
+            fetch(`/${action}_button`)
+                .then(response => response.text())
+                .then(data => console.log(data));
+        }
+    </script>
+</body>
+</html>
+

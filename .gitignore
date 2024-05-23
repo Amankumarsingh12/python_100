@@ -1,0 +1,6 @@
+# Ignore all files in the book directory at the root level
+/book/*
+
+# Ignore all __pycache__ directories and their contents, regardless of location
+__pycache__/
+
